@@ -1,0 +1,244 @@
+<div id="sidebar" class="main">
+  <button id="btn-estadisticas" (click)="mostrarSeccion('estadisticas', $event)">Estadísticas</button>
+  <button id="btn-noticias" (click)="mostrarSeccion('noticias', $event)">Noticias</button>
+  <button id="btn-biblioteca" (click)="mostrarSeccion('biblioteca', $event)">Biblioteca</button>
+</div>
+
+<div #content>
+  <div id="seccion-estadisticas" class="seccion" style="justify-content: center;">
+    <!-- Inicio Graficas -->
+
+    <!-- Incidentes por Categoria  -->
+    <div class="statistics-container">
+      <div class="checkboxes">
+        <div *ngFor="let encabezado of originalChartData">
+          <dx-check-box
+            [text]="encabezado.encabezado"
+            [value]="selectedCategories.includes(encabezado.encabezado)"
+            (onValueChanged)="toggleEncabezado(encabezado.encabezado, $event.value);">
+          </dx-check-box>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <dx-chart
+          [dataSource]="filteredData"
+          title="Incidentes por categoria"
+          (onExporting)="onExporting($event)"
+          [export]="{
+            enabled: true,
+            fileName: 'Estadísticas',
+            formats: ['']
+          }">
+          <dxi-series
+            argumentField="encabezado"
+            valueField="cantidad"
+            name="Incidentes"
+            type="bar"
+            color="#F35722">
+          </dxi-series>
+          <dxo-legend [visible]="true" [horizontalAlignment]="'right'" [verticalAlignment]="'top'"></dxo-legend>
+          <dxo-tooltip [enabled]="true"></dxo-tooltip>
+        </dx-chart>
+      </div>
+    </div>
+    <br>
+    <!-- Incidentes por impacto -->
+    <div class="statistics-container">
+      <div class="checkboxes">
+        <div *ngFor="let encabezado of originalChartData2">
+          <dx-check-box
+            [text]="encabezado.encabezado"
+            [value]="selectedCategories2.includes(encabezado.encabezado)"
+            (onValueChanged)="toggleEncabezado2(encabezado.encabezado, $event.value);">
+          </dx-check-box>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <dx-chart
+          [dataSource]="filteredData2"
+          title="Incidentes por Impacto"
+          (onExporting)="onExporting($event)"
+          [export]="{
+            enabled: true,
+            fileName: 'Estadísticas',
+            formats: ['']
+          }">
+          <dxi-series
+            argumentField="encabezado"
+            valueField="cantidad"
+            name="Incidentes"
+            type="bar"
+            color="#F35722">
+          </dxi-series>
+          <dxo-legend [visible]="true" [horizontalAlignment]="'right'" [verticalAlignment]="'top'"></dxo-legend>
+          <dxo-tooltip [enabled]="true"></dxo-tooltip>
+        </dx-chart>
+      </div>
+    </div>
+    <br>
+    <!-- Incidentes por productos -->
+    <div class="statistics-container">
+      <div class="checkboxes">
+        <div *ngFor="let encabezado of originalChartData3">
+          <dx-check-box
+            [text]="encabezado.encabezado"
+            [value]="selectedCategories3.includes(encabezado.encabezado)"
+            (onValueChanged)="toggleEncabezado3(encabezado.encabezado, $event.value);">
+          </dx-check-box>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <dx-chart
+          [dataSource]="filteredData3"
+          title="Incidentes por Producto"
+          (onExporting)="onExporting($event)"
+          [export]="{
+            enabled: true,
+            fileName: 'Estadísticas',
+            formats: ['']
+          }">
+          <dxi-series
+            argumentField="encabezado"
+            valueField="cantidad"
+            name="Incidentes"
+            type="bar"
+            color="#F35722">
+          </dxi-series>
+          <dxo-legend [visible]="true" [horizontalAlignment]="'right'" [verticalAlignment]="'top'"></dxo-legend>
+          <dxo-tooltip [enabled]="true"></dxo-tooltip>
+        </dx-chart>
+      </div>
+    </div>
+    <!-- Fin Graficas -->
+  </div>
+
+  <div id="seccion-noticias" class="seccion">
+    <div class="noticias">
+        <div class="imagen">
+            <img src="/assets/imagenes/noticia1.jpg" alt="hacker">
+        </div>
+        <div class="informacion">
+          <h2>Hacker se robó casi $2.000 millones de una Alcaldía en Norte de Santander</h2>
+            <p>
+              Entre el 18 y el 24 de abril, el municipio de Cáchira en Norte de Santander fue escenario de un audaz robo informático en el cual se sustrajeron 1.930 millones de pesos de las cuentas del Banco Agrario. El hurto fue llevado a cabo mediante cinco transacciones virtuales, según lo confirmó el alcalde de Cáchira, Herman Fernando Jaime, a medios locales.
+            </p>
+            <p>
+              Tras esta alerta, los hechos se comunicaron de inmediato al alcalde, quien personalmente se dirigió a la entidad bancaria; allí, se confirmó que desde el 18 de abril habían ocurrido cinco retiros consecutivos, sumando un total de 1.930 millones de pesos. Los fondos fueron transferidos desde una cuenta de Invías hacia dos cuentas pertenecientes a Davivienda y Banco Colombia.
+            </p>
+            <a href="https://www.infobae.com/colombia/2024/04/27/hacker-se-robo-casi-2000-millones-de-una-alcaldia-en-norte-de-santander-el-dinero-era-para-reparar-vias-rurales/" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="noticias">
+          <div class="informacion">
+            <h2>Página web de La Cultural100.7FM sufrió ataque de hackers</h2>
+            <p>
+              Viernes 06 de enero de 2023 Bucaramanga.
+            </p>
+            <p>
+              Santander Este viernes desde la 01:54 pm el portal web de la emisora Cultural Luis Carlos Galán Sarmiento 100.7FM, fue blanco de un ataque perpetrado por hackers que ingresaron a la plataforma y publicaron de forma masiva contenido sensible lo que constituye un delito en Colombia.
+            </p>
+            <a href="https://www.emisoracultural.gov.co/pagina-web-de-la-cultural100-7fm-sufrio-ataque-de-hackers/" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+        </div>
+        <div class="imagen">
+          <img src="/assets/imagenes/noticia2.jpeg" alt="hacker">
+        </div>
+    </div>
+
+    <div class="noticias">
+      <div class="imagen">
+          <img src="/assets/imagenes/noticia3.jpg" alt="hacker">
+      </div>
+      <div class="informacion">
+        <h2>Capturan a joven hacker que actuaba desde Lebrija</h2>
+          <p>
+            Desde un computador ubicado en el municipio de Lebrija, Santander, logró hackear cuentas oficiales de la alcaldía de Valparaíso, Antioquia, y desviar recursos. La Policía Metropolitana de Bucaramanga a través del Grupo de delitos Informáticos capturó a la joven de 20 años, quien era ayudada por personas en otras ciudades para cometer los robos.</p>
+          <p>
+            La Policía Metropolitana de Bucaramanga a través del Grupo de delitos Informáticos capturó a la joven de 20 años, quien era ayudada por personas en otras ciudades para cometer los robos.
+          </p>
+          <p>
+            La investigación comenzó cuando en una entidad bancaria, ubicada en el Municipio de Valparaíso, departamento de Antioquia, se alertó por el movimiento de más de treinta y seis millones de pesos, pertenecientes a las cuentas del alumbrado Público, con rumbo al municipio de Lebrija en Santander.
+          </p>
+          <a href="https://www.emisoracultural.gov.co/capturan-a-joven-hacker-que-actuaba-desde-lebrija/" target="_blank">
+            <button id="noticiaButton">Leer más...</button>
+          </a>
+      </div>
+  </div>
+
+
+  </div>
+
+
+  <div id="seccion-biblioteca" class="seccion">
+    <div class="cards-container">
+        <!-- Contenedor de cartas -->
+        <div class="card">
+          <img src="/assets/imagenes/card1.jpg" alt="Título de la película 1">
+          <div class="card-content">
+            <h3>CiberSeguridad</h3>
+            <p>PDF descargable.</p>
+            <a href="https://dialnet.unirioja.es/descarga/articulo/4549946.pdf" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/assets/imagenes/card2.jpg">
+          <div class="card-content">
+            <h3>Manual CiberSeguridad</h3>
+            <p>Libro detallado para practicar la ciberseguridad</p>
+            <a href="https://books.google.es/books?hl=es&lr=&id=oWT7EAAAQBAJ&oi=fnd&pg=PA1&dq=ciberseguridad&ots=Bb7jUATxFa&sig=0nXbAxc5Hyk2UQHRDr-RexF38yM#v=onepage&q=ciberseguridad&f=false" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/assets/imagenes/card3.jpg">
+          <div class="card-content">
+            <h3>Estrategias CiberSeguridad</h3>
+            <p>Libro de Estrategias para la CiberSeguridad</p>
+            <a href="https://digibug.ugr.es/bitstream/handle/10481/92804/101464.pdf?sequence=4&isAllowed=y" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/assets/imagenes/card4.jpg">
+          <div class="card-content">
+            <h3>CiberSeguridad En empleados</h3>
+            <p>Estudio detallado para la ciberseguridad en empleados</p>
+            <a href="https://tecnotrend.lasallebajio.edu.mx/uploads/a09n16/francisco.pdf" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/assets/imagenes/card5.jpg">
+          <div class="card-content">
+            <h3>Inteligencia Artificial en la CiberSeguridad</h3>
+            <p>Estudio sobre IA usada en Ciberseguridad</p>
+            <a href="https://openaccess.uoc.edu/handle/10609/150519" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/assets/imagenes/card6.jpg">
+          <div class="card-content">
+            <h3>CiberSeguridad en Equipos IOT</h3>
+            <p>Analisis de vulnerabilidades en Equipos IOT</p>
+            <a href="https://repository.libertadores.edu.co/bitstreams/5457a87c-5e8a-43ec-8331-af88f36518cc/download" target="_blank">
+              <button id="noticiaButton">Leer más...</button>
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

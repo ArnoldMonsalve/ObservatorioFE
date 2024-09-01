@@ -1,0 +1,190 @@
+<h2 style="text-align: center; margin-top:50px">Reporte de Incidentes</h2>
+
+<div style="display: flex; justify-content: center;">
+  <dx-data-grid style="width: 100%; max-width: 1200px;" class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [keyExpr]="'id'"
+  [showBorders]="true"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+   [editing]="{
+      mode: 'batch',
+      allowUpdating: true,
+      allowDeleting: true,
+      allowAdding: true,
+      texts: {
+        confirmDeleteMessage: '¿Está seguro de que desea eliminar este registro?'
+      }
+    }"
+    (onRowUpdating)="guardarCambios($event)"
+    (onRowInserting)="Crear($event)"
+    (onRowRemoving)="Borrar($event)">
+
+
+<dxo-paging [pageSize]="10"></dxo-paging>
+<dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+<dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="id"
+    caption="ID"
+    [width]="100"
+    [allowEditing]="false">
+  </dxi-column>
+
+  <dxi-column
+  dataField="idCategoria"
+  caption="Categoría"
+  [hidingPriority]="3"
+  [allowEditing]="true">
+  <dxo-lookup
+    [dataSource]="categoryDataSource"
+    valueExpr="id"
+    displayExpr="nombre">
+  </dxo-lookup>
+</dxi-column>
+
+  <dxi-column
+  dataField="fecha"
+  caption="Fecha"
+  dataType="date"
+  [allowEditing]="true">
+</dxi-column>
+
+<dxi-column
+dataField="descripcion"
+caption="Descripción"
+[hidingPriority]="3"
+[allowEditing]="true">
+</dxi-column>
+
+<dxi-column
+dataField="idImpacto"
+caption="Impacto"
+[hidingPriority]="3"
+[allowEditing]="true">
+<dxo-lookup
+  [dataSource]="impactoDataSource"
+  valueExpr="id"
+  displayExpr="nombre">
+</dxo-lookup>
+</dxi-column>
+
+<dxi-column
+dataField="idProducto"
+caption="Producto Afectado"
+[hidingPriority]="3"
+[allowEditing]="true">
+<dxo-lookup
+  [dataSource]="productoDataSource"
+  valueExpr="id"
+  displayExpr="nombre">
+</dxo-lookup>
+</dxi-column>
+
+<dxi-column
+dataField="medidasTomadas"
+caption="Acciones Tomadas"
+[hidingPriority]="3"
+[allowEditing]="true">
+</dxi-column>
+
+<dxi-column
+dataField="idDepartamento"
+caption="Departamento"
+[hidingPriority]="3"
+[allowEditing]="true">
+<dxo-lookup
+  [dataSource]="departamentoDataSource"
+  valueExpr="id"
+  displayExpr="nombre">
+</dxo-lookup>
+</dxi-column>
+
+<dxi-column
+dataField="idMunicipio"
+caption="Municipio"
+[hidingPriority]="3"
+[allowEditing]="true">
+<dxo-lookup
+  [dataSource]="municipioDataSource"
+  valueExpr="id"
+  displayExpr="nombre">
+</dxo-lookup>
+</dxi-column>
+
+  </dx-data-grid>
+</div>
+
+<!-- <h2 class="content-block">Incidentes</h2>
+
+<dx-data-grid class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true">
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="Task_ID"
+    [width]="90"
+    [hidingPriority]="2">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Subject"
+    [width]="190"
+    caption="Subject"
+    [hidingPriority]="8">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Status"
+    caption="Status"
+    [hidingPriority]="6">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Priority"
+    caption="Priority"
+    [hidingPriority]="5">
+    <dxo-lookup
+      [dataSource]="priority"
+      valueExpr="value"
+      displayExpr="name">
+    </dxo-lookup>
+  </dxi-column>
+  <dxi-column
+    dataField="ResponsibleEmployee.Employee_Full_Name"
+    caption="Assigned To"
+    [allowSorting]="false"
+    [hidingPriority]="7">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Start_Date"
+    caption="Start Date"
+    dataType="date"
+    [hidingPriority]="3">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Due_Date"
+    caption="Due Date"
+    dataType="date"
+    [hidingPriority]="4">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Priority"
+    caption="Priority"
+    name="Priority"
+    [hidingPriority]="1">
+  </dxi-column>
+  <dxi-column
+    dataField="Task_Completion"
+    caption="Completion"
+    [hidingPriority]="0">
+  </dxi-column>
+</dx-data-grid> -->

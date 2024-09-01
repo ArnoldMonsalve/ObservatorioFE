@@ -1,0 +1,68 @@
+<h2 style="text-align: center; margin-top:50px">Reportar Incidente</h2>
+
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+  <form #myForm="ngForm" style="width: 100%; max-width: 800px;">
+    <dx-form [colCount]="1">
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.fecha"
+          name="fecha"
+          label="Fecha"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.impacto"
+          name="impacto"
+          label="Impacto"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.estado"
+          name="estado"
+          label="Estado actual"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.producto"
+          name="producto"
+          label="Producto Afectado"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-area
+          [(ngModel)]="formData.descripcion"
+          name="descripcion"
+          label="Descripcion de lo sucedido"
+        ></dx-text-area>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-area
+          [(ngModel)]="formData.medida"
+          name="medida"
+          label="Medidas tomadas"
+        ></dx-text-area>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.departamento"
+          name="departamento"
+          label="Departamento"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.municipio"
+          name="municipio"
+          label="Municipio"
+        ></dx-text-box>
+      </dxi-item>
+    </dx-form>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <dx-button style="margin-right: 5px;" text="Guardar" type="success" (onClick)="guardar(myForm)"></dx-button>
+      <dx-button text="Regresar" type="danger" [routerLink]="['/incidentes-consulta']"></dx-button>
+    </div>
+  </form>
+</div>

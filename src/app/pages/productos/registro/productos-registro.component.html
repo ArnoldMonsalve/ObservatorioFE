@@ -1,0 +1,40 @@
+<h2 style="text-align: center; margin-top:50px">Nuevo Producto</h2>
+
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+  <form #myForm="ngForm" style="width: 100%; max-width: 800px;">
+    <dx-form [colCount]="1">
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.nombre"
+          name="nombre"
+          label="Nombre"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.categoria"
+          name="categoria"
+          label="Categoria"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-box
+          [(ngModel)]="formData.fabricante"
+          name="fabricante"
+          label="Faricante"
+        ></dx-text-box>
+      </dxi-item>
+      <dxi-item>
+        <dx-text-area
+          [(ngModel)]="formData.descripcion"
+          name="descripcion"
+          label="Descripcion del Producto"
+        ></dx-text-area>
+      </dxi-item>
+    </dx-form>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <dx-button style="margin-right: 5px;" text="Guardar" type="success" (onClick)="guardar(myForm)"></dx-button>
+      <dx-button text="Regresar" type="danger" [routerLink]="['/productos-consulta']"></dx-button>
+    </div>
+  </form>
+</div>
